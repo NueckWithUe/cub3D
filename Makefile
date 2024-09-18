@@ -5,17 +5,18 @@ CFLAGS	=		-Wall -Wextra -Werror
 SRCDIR	=		src
 SRC		=		main.c \
 				error_handling.c \
-				init.c
+				init.c \
+				get_map.c
 
-# ERRDIR	=	src/error
-# ERRSRC	=	error.c
+RTDIR	=		src/raytracer
+RTSRC	=		raytracing.c
 
 LIBFT	=		libs/libft/libft.a
 GNL		=		libs/get_next_line/
 
-VPATH	=		$(SRCDIR)#:$(ERRDIR)
+VPATH	=		$(SRCDIR):$(RTDIR)
 
-OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o))
+OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o) $(RTSRC:%.c=%.o))
 
 $(NAME):		$(LIBFT) install_mlx $(OBJ)
 				$(CC) $(CFLAGS) $(GNL)*.c $(OBJ) $(LIBFT) -o $(NAME) ./libs/MLX42/build/libmlx42.a -Iinclude -lglfw
