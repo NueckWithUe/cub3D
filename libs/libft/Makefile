@@ -41,7 +41,9 @@ SRC		=	ft_atoi.c \
 			ft_printf.c \
 			ft_printf_utils.c \
 			ft_itohex.c \
-			ft_formint.c
+			ft_formint.c \
+			get_next_line.c \
+			get_next_line_utils.c
 
 AR		=	ar
 ARFLAGS	=	-r -s -c
