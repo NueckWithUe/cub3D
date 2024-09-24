@@ -24,10 +24,8 @@ $(NAME):		install_mlx $(LIBFT) $(OBJ)
 $(LIBFT):
 				cd lib/libft && make
 
-lib/MLX42:
+install_mlx:
 				@cd lib/MLX42 && cmake -B build && cmake --build build -j4
-
-install_mlx:	lib/MLX42
 
 all:			$(NAME)
 
