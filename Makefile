@@ -8,8 +8,8 @@ SRC		=		main.c \
 				init.c \
 				get_map.c
 
-RTDIR	=		src/raytracer
-RTSRC	=		raytracing.c
+RTDIR	=		src/raycasting
+RTSRC	=		raycasting.c
 
 LIBFT	=		libs/libft/libft.a
 GNL		=		libs/get_next_line/
