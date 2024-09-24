@@ -29,5 +29,6 @@ int		ft_check_extension(char *s);
 int		ft_print_error(char *errmsg);
 t_data	*init_data(void);
 char	**get_map(char **argv);
+int		ft_check_void(char **map);
 
 #endif

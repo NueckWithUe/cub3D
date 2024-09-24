@@ -22,8 +22,10 @@ int	main(int argc, char **argv)
 		return (1);
 	data = init_data();
 	data->map = get_map(argv);
+	if (!ft_check_void(data->map))
+		return (ft_print_error("Map leads into void"), 1);
 	print_arr(data->map);
-	mlx_loop(data->mlx);
+	// mlx_loop(data->mlx);
 	ft_printf("Player position x: %d\n", data->player->pos_x);
 	return (0);
 }

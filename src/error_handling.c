@@ -32,7 +32,11 @@ static int	ft_check_exist(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (read(fd, 0, 0) == -1)
+	{
+		close(fd);
 		return (0);
+	}
+	close(fd);
 	return (1);
 }
 
@@ -49,4 +53,27 @@ int	ft_print_error(char *errmsg)
 {
 	ft_printf("Error\n%s\n", errmsg);
 	return (0);
+}
+
+int	ft_check_void(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == '0' && (map[y + 1][x] == '\n' || map[y][x + 1] == '\n'))
+			{
+				return (0);
+			}
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+	return (1);
 }
