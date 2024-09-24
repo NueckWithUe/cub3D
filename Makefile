@@ -6,20 +6,20 @@ SRCDIR	=		src
 SRC		=		main.c \
 				error_handling.c \
 				init.c \
-				get_map.c
+				get_map.c \
+				keys.c
 
-RTDIR	=		src/raycasting
-RTSRC	=		raycasting.c
+RCDIR	=		src/raycasting
+RCSRC	=		raycasting.c
 
 LIBFT	=		libs/libft/libft.a
-GNL		=		libs/get_next_line/
 
-VPATH	=		$(SRCDIR):$(RTDIR)
+VPATH	=		$(SRCDIR):$(RCDIR)
 
-OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o) $(RTSRC:%.c=%.o))
+OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o) $(RCSRC:%.c=%.o))
 
-$(NAME):		$(LIBFT) install_mlx $(OBJ)
-				$(CC) $(CFLAGS) $(GNL)*.c $(OBJ) $(LIBFT) -o $(NAME) ./libs/MLX42/build/libmlx42.a -Iinclude -lglfw
+$(NAME):		$(OBJ) $(LIBFT) install_mlx
+				$(CC) $(CFLAGS) $(OBJ) $(LIBFT) ./libs/MLX42/build/libmlx42.a -Iinclude -lglfw -o $(NAME)
 
 $(LIBFT):
 				cd libs/libft && make

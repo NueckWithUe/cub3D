@@ -1,6 +1,6 @@
 #include "../../include/cub3D.h"
 
-void	raytracer(void)
+void	raycaster(void)
 {
 	int	i;
 

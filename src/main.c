@@ -1,15 +1,39 @@
 #include "../include/cub3D.h"
 
-static void print_arr(char **arr)
-{
-	int i = 0;
+// static void print_arr(char **arr)
+// {
+// 	int i = 0;
 
-	while (arr[i])
+// 	while (arr[i])
+// 	{
+// 		ft_printf("%s", arr[i]);
+// 		i++;
+// 	}
+// 	ft_printf("\n");
+// }
+
+static t_player	*get_pos(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (data->map[y])
 	{
-		ft_printf("%s", arr[i]);
-		i++;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == 'P')
+			{
+				data->player->pos_x = x;
+				data->player->pos_y = y;
+			}
+			x++;
+		}
+		y++;
+		x = 0;
 	}
-	ft_printf("\n");
+	return (data->player);
 }
 
 int	main(int argc, char **argv)
@@ -24,8 +48,9 @@ int	main(int argc, char **argv)
 	data->map = get_map(argv);
 	if (!ft_check_void(data->map))
 		return (ft_print_error("Map leads into void"), 1);
-	print_arr(data->map);
-	// mlx_loop(data->mlx);
-	ft_printf("Player position x: %d\n", data->player->pos_x);
+	data->player = get_pos(data);
+	raycaster();
+	mlx_key_hook(data->mlx, &ft_keypress, (void *)data);
+	mlx_loop(data->mlx);
 	return (0);
 }

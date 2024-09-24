@@ -30,5 +30,7 @@ int		ft_print_error(char *errmsg);
 t_data	*init_data(void);
 char	**get_map(char **argv);
 int		ft_check_void(char **map);
+void	raycaster(void);
+void	ft_keypress(mlx_key_data_t keydata, void *param);
 
 #endif
