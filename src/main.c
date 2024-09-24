@@ -23,7 +23,7 @@ static t_player	*get_pos(t_data *data)
 	{
 		while (data->map[y][x])
 		{
-			if (data->map[y][x] == 'P')
+			if ((data->map[y][x] == 'N') || (data->map[y][x] == 'S') || (data->map[y][x] == 'E') || (data->map[y][x] == 'W'))
 			{
 				data->player->pos_x = x;
 				data->player->pos_y = y;
