@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/09/30 13:12:31 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:07:16 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 static int	get_height(char **argv)
 {
-	int	fd;
-	int	height;
+	int		fd;
+	int		height;
+	char	*line;
 
 	fd = open(argv[1], O_RDONLY);
 	height = 0;
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	while (line)
+	{
 		height++;
+		if (line[0] == '\n' || line[0] == 'N' || line[0] == 'S' || line[0] == 'E' || line[0] == 'W' || line[0] == 'F' || line[0] == 'C')
+			height--;
+		line = get_next_line(fd);
+	}
 	close(fd);
 	return (height);
 }
@@ -28,6 +35,7 @@ static int	get_height(char **argv)
 char	**get_map(char **argv)
 {
 	char	**map;
+	char	*line;
 	int		fd;
 	int		height;
 	int		y;
@@ -36,6 +44,12 @@ char	**get_map(char **argv)
 	height = get_height(argv);
 	map = malloc(sizeof(char *) * height + 1);
 	fd = open(argv[1], O_RDONLY);
+	line = get_next_line(fd);
+	while (line[0] == '\n' || line[0] == 'N' || line[0] == 'S' || line[0] == 'E' || line[0] == 'W' || line[0] == 'F' || line[0] == 'C')
+	{
+
+		line = get_next_line(fd);
+	}
 	while (y <= height)
 	{
 		map[y] = get_next_line(fd);
