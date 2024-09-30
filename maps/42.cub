@@ -1,13 +1,13 @@
-NO ./textrues/north
-SO ./textrues/south
-EA ./textrues/east
-WE ./textrues/west
+NO ./textures/north
+SO ./textures/south
+EA ./textures/east
+WE ./textures/west
 
 F 128,128,128
 C 153,255,255
 
 1111111111
 1000000001
-1000000001
+10000N0001
 1000000001
 1111111111
