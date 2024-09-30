@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 13:12:36 by nnagel            #+#    #+#             */
+/*   Updated: 2024/09/30 13:20:05 by nnagel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
 int	ft_check_extension(char *s)
@@ -43,7 +55,7 @@ static int	ft_check_exist(char *path)
 int	ft_error_handling(char **argv)
 {
 	if (!ft_check_extension(argv[1]))
-		return (ft_print_error("Wrong map extension. Map extension should be (.cub)"));
+		return (ft_print_error("Map extension should be (.cub)"));
 	if (!ft_check_exist(argv[1]))
 		return (ft_print_error("File not readable or doesn't exist"));
 	return (1);
@@ -66,7 +78,8 @@ int	ft_check_void(char **map)
 	{
 		while (map[y][x])
 		{
-			if (map[y][x] == '0' && (map[y + 1][x] == '\n' || map[y][x + 1] == '\n'))
+			if (map[y][x] == '0'
+					&& (map[y + 1][x] == '\n' || map[y][x + 1] == '\n'))
 			{
 				return (0);
 			}

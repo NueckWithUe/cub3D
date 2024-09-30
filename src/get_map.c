@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
+/*   Updated: 2024/09/30 13:12:31 by nnagel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
 static int	get_height(char **argv)
@@ -24,7 +36,7 @@ char	**get_map(char **argv)
 	height = get_height(argv);
 	map = malloc(sizeof(char *) * height + 1);
 	fd = open(argv[1], O_RDONLY);
-	while(y <= height)
+	while (y <= height)
 	{
 		map[y] = get_next_line(fd);
 		y++;
