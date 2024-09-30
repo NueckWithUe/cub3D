@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
+/*   Updated: 2024/09/30 13:15:10 by nnagel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
 // static void print_arr(char **arr)
@@ -12,10 +24,24 @@
 // 	ft_printf("\n");
 // }
 
+static double	get_rot(char direction)
+{
+	if (direction == 'N')
+		return (M_PI / 2);
+	if (direction == 'S')
+		return ((3 * M_PI) / 2);
+	if (direction == 'E')
+		return (0);
+	if (direction == 'W')
+		return (M_PI);
+	return (42);
+}
+
 static t_player	*get_pos(t_data *data)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	curr;
 
 	x = 0;
 	y = 0;
@@ -23,10 +49,13 @@ static t_player	*get_pos(t_data *data)
 	{
 		while (data->map[y][x])
 		{
-			if ((data->map[y][x] == 'N') || (data->map[y][x] == 'S') || (data->map[y][x] == 'E') || (data->map[y][x] == 'W'))
+			curr = data->map[y][x];
+			if ((curr == 'N') || (curr == 'S')
+				|| (curr == 'E') || (curr == 'W'))
 			{
 				data->player->pos_x = x;
 				data->player->pos_y = y;
+				data->player->rot = get_rot(curr);
 			}
 			x++;
 		}
