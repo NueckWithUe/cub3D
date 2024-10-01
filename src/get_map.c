@@ -39,16 +39,29 @@ static char	*get_path(char *line)
 	return (path);
 }
 
-static void	get_conf(char *line)
+static t_data	*get_conf(char *line, t_data *data)
 {
-	char	*data;
+	char	*path;
 
-	data = get_path(line);
-	// if (!ft_strncmp(line, "NO ", 3))
-	// {
-	// 	mlx_load_png(data);
-	// }
-	free(data);
+	path = get_path(line);
+	if (!ft_strncmp(line, "NO ", 3))
+	{
+		data->tNorth = mlx_load_png(path);
+	}
+	else if (!ft_strncmp(line, "SO ", 3))
+	{
+		data->tSouth = mlx_load_png(path);
+	}
+	else if (!ft_strncmp(line, "EA ", 3))
+	{
+		data->tEast = mlx_load_png(path);
+	}
+	else if (!ft_strncmp(line, "WE ", 3))
+	{
+		data->tWest = mlx_load_png(path);
+	}
+	free(path);
+	return (data);
 }
 
 static int	get_height(char **argv)
@@ -71,7 +84,7 @@ static int	get_height(char **argv)
 	return (height);
 }
 
-char	**get_map(char **argv)
+char	**get_map(char **argv, t_data *data)
 {
 	char	**map;
 	char	*line;
@@ -87,7 +100,7 @@ char	**get_map(char **argv)
 	while (line[0] == '\n' || line[0] == 'N' || line[0] == 'S' || line[0] == 'E' || line[0] == 'W' || line[0] == 'F' || line[0] == 'C')
 	{
 		if (line[0] != '\n')
-			get_conf(line);
+			data = get_conf(line, data);
 		line = get_next_line(fd);
 	}
 	while (y <= height)

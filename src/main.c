@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 	if (!ft_error_handling(argv))
 		return (1);
 	data = init_data();
-	data->map = get_map(argv);
+	data->map = get_map(argv, data);
 	if (!ft_check_void(data->map))
 		return (ft_print_error("Map leads into void"), 1);
 	data->player = get_pos(data);
