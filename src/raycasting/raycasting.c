@@ -12,12 +12,11 @@
 
 #include "../../include/cub3D.h"
 
-void	raycaster(void)
+void	raycaster(t_ray *r, t_map *m, t_player *p)
 {
-	int	i;
-
-	i = 0;
-	while (i < 10)
+	r->angle = p->angle;
+	int h = m->height;
+	int i = 0;
+	while (i < h)
 		i++;
-	return ;
 }

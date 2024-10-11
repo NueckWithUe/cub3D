@@ -67,19 +67,19 @@ int	ft_print_error(char *errmsg)
 	return (0);
 }
 
-int	ft_check_void(char **map)
+int	ft_check_void(t_map *map)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (map[y])
+	while (map->con[y])
 	{
-		while (map[y][x])
+		while (map->con[y][x])
 		{
-			if (map[y][x] == '0'
-					&& (map[y + 1][x] == '\n' || map[y][x + 1] == '\n'))
+			if (map->con[y][x] == '0'
+					&& (map->con[y + 1][x] == '\n' || map->con[y][x + 1] == '\n'))
 			{
 				return (0);
 			}

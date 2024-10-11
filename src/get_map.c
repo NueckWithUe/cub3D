@@ -84,17 +84,17 @@ static int	get_height(char **argv)
 	return (height);
 }
 
-char	**get_map(char **argv, t_data *data)
+t_map	*get_map(char **argv, t_data *data)
 {
-	char	**map;
+	t_map	*m;
 	char	*line;
 	int		fd;
-	int		height;
 	int		y;
 
+	m = malloc(sizeof(t_map));
 	y = 0;
-	height = get_height(argv);
-	map = malloc(sizeof(char *) * height + 1);
+	m->height = get_height(argv);
+	m->con = malloc(sizeof(char *) * m->height + 1);
 	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
 	while (line[0] == '\n' || line[0] == 'N' || line[0] == 'S' || line[0] == 'E' || line[0] == 'W' || line[0] == 'F' || line[0] == 'C')
@@ -103,11 +103,11 @@ char	**get_map(char **argv, t_data *data)
 			data = get_conf(line, data);
 		line = get_next_line(fd);
 	}
-	while (y <= height)
+	while (y <= m->height)
 	{
-		map[y] = get_next_line(fd);
+		m->con[y] = get_next_line(fd);
 		y++;
 	}
 	close(fd);
-	return (map);
+	return (m);
 }

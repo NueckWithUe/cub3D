@@ -19,7 +19,7 @@ VPATH	=		$(SRCDIR):$(RCDIR)
 OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o) $(RCSRC:%.c=%.o))
 
 $(NAME):		install_mlx $(LIBFT) $(OBJ)
-				$(CC) $(CFLAGS) $(OBJ) $(LIBFT) ./lib/MLX42/build/libmlx42.a -Iinclude -lglfw -o $(NAME)
+				$(CC) $(CFLAGS) $(OBJ) $(LIBFT) ./lib/MLX42/build/libmlx42.a -Iinclude -lglfw -lm -o $(NAME)
 
 $(LIBFT):
 				cd lib/libft && make

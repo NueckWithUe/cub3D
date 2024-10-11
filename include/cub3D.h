@@ -22,14 +22,34 @@
 # include "get_next_line.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1024
+# define HEIGHT 512
+# define FOV 1
+# define DR 0.0174533
+# define M_PI 3.14159265358979323846
+
+typedef struct s_ray
+{
+	float	r_x;
+	float	r_y;
+	float	o_x;
+	float	o_y;
+	float	angle;
+}	t_ray;
+
+typedef struct s_map
+{
+	int		height;
+	char	**con;
+}	t_map;
 
 typedef struct s_player
 {
-	int		pos_x;
-	int		pos_y;
-	double	rot;
+	float	pos_x;
+	float	pos_y;
+	float	d_x;
+	float	d_y;
+	float	angle;
 }	t_player;
 
 typedef struct s_data
@@ -40,16 +60,17 @@ typedef struct s_data
 	mlx_texture_t	*tSouth;
 	mlx_texture_t	*tEast;
 	mlx_texture_t	*tWest;
-	char			**map;
+	t_map			*map;
+	t_ray			*ray;
 }	t_data;
 
 int		ft_error_handling(char **argv);
 int		ft_check_extension(char *s);
 int		ft_print_error(char *errmsg);
 t_data	*init_data(void);
-char	**get_map(char **argv, t_data *data);
-int		ft_check_void(char **map);
-void	raycaster(void);
+t_map	*get_map(char **argv, t_data *data);
+int		ft_check_void(t_map *map);
+void	raycaster(t_ray *r, t_map *map, t_player *p);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
 
 #endif
