@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/09/30 13:15:10 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/14 17:45:26 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	main(int argc, char **argv)
 	if (!ft_check_void(data->map))
 		return (ft_print_error("Map leads into void"), 1);
 	data->player = get_pos(data);
-	raycaster(data->ray, data->map, data->player);
 	mlx_key_hook(data->mlx, &ft_keypress, (void *)data);
+	mlx_loop_hook(data->mlx, raycaster, (void *)data);
 	mlx_loop(data->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/09/30 13:13:04 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/14 17:44:07 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define HEIGHT 512
 # define FOV 1
 # define DR 0.0174533
-# define M_PI 3.14159265358979323846
+// # define M_PI 3.14159265358979323846
 
 typedef struct s_ray
 {
@@ -70,7 +70,7 @@ int		ft_print_error(char *errmsg);
 t_data	*init_data(void);
 t_map	*get_map(char **argv, t_data *data);
 int		ft_check_void(t_map *map);
-void	raycaster(t_ray *r, t_map *map, t_player *p);
+void	raycaster(void *param);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
 
 #endif
