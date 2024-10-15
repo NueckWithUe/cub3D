@@ -10,7 +10,10 @@ SRC		=		main.c \
 				keys.c
 
 RCDIR	=		src/raycasting
-RCSRC	=		raycasting.c
+RCSRC	=		raycasting.c \
+				hor_line_check.c \
+				ver_line_check.c \
+				convert_ray.c
 
 LIBFT	=		lib/libft/libft.a
 

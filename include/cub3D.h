@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/14 17:44:07 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/15 16:28:34 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ typedef struct s_data
 	mlx_texture_t	*tSouth;
 	mlx_texture_t	*tEast;
 	mlx_texture_t	*tWest;
+	mlx_image_t		*iNorth;
+	mlx_image_t		*iSouth;
+	mlx_image_t		*iEast;
+	mlx_image_t		*iWest;
 	t_map			*map;
 	t_ray			*ray;
 }	t_data;
@@ -72,5 +76,8 @@ t_map	*get_map(char **argv, t_data *data);
 int		ft_check_void(t_map *map);
 void	raycaster(void *param);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
+float	horizontal_line_check(t_data *data);
+float	vertical_line_check(t_data *data);
+void	convert_ray(t_data *d, float dist, float tmp);
 
 #endif
