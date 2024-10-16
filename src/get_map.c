@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/15 16:35:45 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 15:08:00 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,13 @@ static t_data	*get_conf(char *line, t_data *data)
 
 	path = get_path(line);
 	if (!ft_strncmp(line, "NO ", 3))
-	{
 		data->tNorth = mlx_load_png(path);
-		data->iNorth = mlx_texture_to_image(data->mlx, data->tNorth);
-	}
 	else if (!ft_strncmp(line, "SO ", 3))
-	{
 		data->tSouth = mlx_load_png(path);
-		data->iSouth = mlx_texture_to_image(data->mlx, data->tSouth);
-	}
 	else if (!ft_strncmp(line, "EA ", 3))
-	{
 		data->tEast = mlx_load_png(path);
-		data->iEast = mlx_texture_to_image(data->mlx, data->tEast);
-	}
 	else if (!ft_strncmp(line, "WE ", 3))
-	{
 		data->tWest = mlx_load_png(path);
-		data->iWest = mlx_texture_to_image(data->mlx, data->tWest);
-	}
 	free(path);
 	return (data);
 }
