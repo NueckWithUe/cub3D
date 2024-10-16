@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/15 16:28:34 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 15:02:04 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 # include "get_next_line.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 1024
-# define HEIGHT 512
+# define WIDTH 1280
+# define HEIGHT 720
 # define FOV 1
 # define DR 0.0174533
 // # define M_PI 3.14159265358979323846
+# define TEX_HEIGHT 64
+# define TEX_WIDTH 64
 
 typedef struct s_ray
 {
