@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 15:08:00 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 19:35:47 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static t_data	*get_conf(char *line, t_data *data)
 
 	path = get_path(line);
 	if (!ft_strncmp(line, "NO ", 3))
-		data->tNorth = mlx_load_png(path);
+		data->tnorth = mlx_load_png(path);
 	else if (!ft_strncmp(line, "SO ", 3))
-		data->tSouth = mlx_load_png(path);
+		data->tsouth = mlx_load_png(path);
 	else if (!ft_strncmp(line, "EA ", 3))
-		data->tEast = mlx_load_png(path);
+		data->teast = mlx_load_png(path);
 	else if (!ft_strncmp(line, "WE ", 3))
-		data->tWest = mlx_load_png(path);
+		data->twest = mlx_load_png(path);
 	free(path);
 	return (data);
 }

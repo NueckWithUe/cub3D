@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:25 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 15:16:58 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 19:36:08 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ t_data	*init_data(void)
 	data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
 	if (!data->mlx)
 		return (NULL);
-	data->iBuffer = NULL;
+	data->ibuffer = NULL;
 	return (data);
 }

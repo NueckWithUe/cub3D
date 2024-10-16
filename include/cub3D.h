@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 17:48:48 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 19:34:52 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define FOV 1
+# define FOV 60
 # define DR 0.0174533
 // # define M_PI 3.14159265358979323846
 # define TEX_HEIGHT 64
@@ -60,11 +60,11 @@ typedef struct s_data
 {
 	mlx_t			*mlx;
 	t_player		*player;
-	mlx_texture_t	*tNorth;
-	mlx_texture_t	*tSouth;
-	mlx_texture_t	*tEast;
-	mlx_texture_t	*tWest;
-	mlx_image_t		*iBuffer;
+	mlx_texture_t	*tnorth;
+	mlx_texture_t	*tsouth;
+	mlx_texture_t	*teast;
+	mlx_texture_t	*twest;
+	mlx_image_t		*ibuffer;
 	t_map			*map;
 	t_ray			*ray;
 }	t_data;
