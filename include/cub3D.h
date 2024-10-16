@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 15:07:33 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 17:48:48 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 // # define M_PI 3.14159265358979323846
 # define TEX_HEIGHT 64
 # define TEX_WIDTH 64
+# define CUB_LEN 64
+# define CUB_HEI 64
 
 typedef struct s_ray
 {

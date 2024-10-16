@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/14 18:00:06 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/16 17:48:41 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static t_player	*get_pos(t_data *data)
 			if ((curr == 'N') || (curr == 'S')
 				|| (curr == 'E') || (curr == 'W'))
 			{
-				data->player->pos_x = x;
-				data->player->pos_y = y;
+				data->player->pos_x = x * CUB_LEN;
+				data->player->pos_y = y * CUB_HEI;
 				data->player->angle = get_ang(curr);
 			}
 			x++;
