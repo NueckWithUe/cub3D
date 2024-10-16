@@ -16,19 +16,23 @@ RCSRC	=		raycasting.c \
 				convert_ray.c
 
 LIBFT	=		lib/libft/libft.a
+MLX_LIB	=		lib/MLX42/build/libmlx42.a
 
 VPATH	=		$(SRCDIR):$(RCDIR)
 
 OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o) $(RCSRC:%.c=%.o))
 
-$(NAME):		install_mlx $(LIBFT) $(OBJ)
+$(NAME):		$(LIBFT) $(MLX_LIB) $(OBJ)
 				$(CC) $(CFLAGS) $(OBJ) $(LIBFT) ./lib/MLX42/build/libmlx42.a -Iinclude -lglfw -lm -o $(NAME)
 
 $(LIBFT):
 				cd lib/libft && make
 
-install_mlx:
-				@cd lib/MLX42 && cmake -B build && cmake --build build -j4
+$(MLX_LIB):
+	@git clone https://github.com/codam-coding-college/MLX42.git lib/MLX42 > /dev/null 2>&1
+	@cd MLX42 && git checkout 4c275721d0de1a9c514c857c29e9dd235d874591 > /dev/null 2>&1 && cd ..
+	@cmake lib/MLX42 -B lib/MLX42/build > /dev/null 2>&1
+	@cmake --build lib/MLX42/build -j4 > /dev/null 2>&1
 
 all:			$(NAME)
 
@@ -44,6 +48,6 @@ fclean:			clean
 				cd lib/libft && make fclean
 				rm -rf $(NAME)
 
-re:				fclean install_mlx all
+re:				fclean all
 
-.PHONY:			all clean fclean re install_mlx
+.PHONY:			all clean fclean re
