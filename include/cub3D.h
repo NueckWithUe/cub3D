@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 19:34:52 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:31:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_ray
 typedef struct s_map
 {
 	int		height;
+	int		len;
 	char	**con;
 }	t_map;
 
