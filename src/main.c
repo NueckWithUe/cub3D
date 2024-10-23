@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 17:48:41 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:29:51 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 static double	get_ang(char direction)
 {
 	if (direction == 'N')
-		return (M_PI / 2);
-	if (direction == 'S')
 		return ((3 * M_PI) / 2);
+	if (direction == 'S')
+		return (M_PI / 2);
 	if (direction == 'E')
 		return (0);
 	if (direction == 'W')
@@ -53,8 +53,8 @@ static t_player	*get_pos(t_data *data)
 			if ((curr == 'N') || (curr == 'S')
 				|| (curr == 'E') || (curr == 'W'))
 			{
-				data->player->pos_x = x * CUB_LEN;
-				data->player->pos_y = y * CUB_HEI;
+				data->player->pos_x = (x * CUB_LEN) + (CUB_LEN / 2);
+				data->player->pos_y = (y * CUB_HEI) + (CUB_HEI / 2);
 				data->player->angle = get_ang(curr);
 			}
 			x++;
