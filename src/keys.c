@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:19 by nnagel            #+#    #+#             */
-/*   Updated: 2024/09/30 13:19:03 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:02:33 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,26 @@ static void	move(mlx_key_data_t keydata, t_player *p)
 	if (keydata.key == MLX_KEY_W && keydata.action == 2)
 	{
 		write(1, "Move forward\n", 13);
-		p->pos_x += p->d_x;
-		p->pos_y += p->d_y;
+		p->pos_x += cos(p->angle) * 5;
+		p->pos_y += sin(p->angle) * 5;
 	}
 	if (keydata.key == MLX_KEY_A && keydata.action == 2)
 	{
 		write(1, "Move left\n", 10);
-		p->pos_x -= 5;
+		p->pos_x += cos(p->angle * M_PI) * 5;
+		p->pos_y += sin(p->angle * M_PI) * 5;
 	}
 	if (keydata.key == MLX_KEY_S && keydata.action == 2)
 	{
 		write(1, "Move backwards\n", 15);
-		p->pos_x -= p->d_x;
-		p->pos_y -= p->d_y;
+		p->pos_x -= cos(p->angle) * 5;
+		p->pos_y -= sin(p->angle) * 5;
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == 2)
 	{
 		write(1, "Move right\n", 11);
-		p->pos_x += 5;
+		p->pos_x -= cos(p->angle) * 5;
+		p->pos_y -= sin(p->angle) * 5;
 	}
 }
 
