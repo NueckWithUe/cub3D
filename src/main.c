@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/23 16:29:51 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/24 10:03:46 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // 	ft_printf("\n");
 // }
 
-static double	get_ang(char direction)
+static float	get_ang(char direction)
 {
 	if (direction == 'N')
 		return ((3 * M_PI) / 2);

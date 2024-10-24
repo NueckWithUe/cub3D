@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/23 16:27:03 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:30:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void	raycaster(void *param)
 	t_data	*d;
 	int		n;
 	float	dist;
-	float	tmp;
+	float	tmp = 0.0;
 
 	d = (t_data *)param;
-	d->ray->angle = d->player->angle - (DR * 30);
+	d->ray->angle = d->player->angle/*  - (DR * 30) */;
 	d->ray->angle = check_angle(d->ray->angle);
 	n = 0;
 	mlx_delete_image(d->mlx, d->ibuffer);
 	d->ibuffer = mlx_new_image(d->mlx, WIDTH, HEIGHT);
-	while (n < FOV)
+	while (n < 1)
 	{
 		dist = horizontal_line_check(d);	// claculate distance with horizontal lines
-		tmp = vertical_line_check(d);		// calculate distance with vertical lines
+		// tmp = vertical_line_check(d);		// calculate distance with vertical lines
 		convert_ray(d, dist, tmp);			// convert casted ray into 3D line
 		n++;
 		d->ray->angle += DR;

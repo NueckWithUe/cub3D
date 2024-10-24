@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:37:43 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/23 16:40:34 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:31:27 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,15 +138,16 @@ void draw_player (t_data *d)
 
 void	convert_ray(t_data *d, float dist, float tmp)
 {
-	float	shorter;
+	// float	shorter;
 
-	if (dist < tmp)
-		shorter = dist;
-	else
-		shorter = tmp;
+	// if (dist < tmp)
+	// 	shorter = dist;
+	// else
+	// 	shorter = tmp;
+	(void)tmp;
 	draw_minimap(d);
 	draw_horiz(d);
 	draw_vert(d);
 	draw_player(d);
-	draw_ray(d, shorter);
+	draw_ray(d, dist);
 }
