@@ -6,11 +6,17 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:27:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/24 11:32:08 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/25 13:54:17 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
+
+/* data->ray->r_y = ((int)(data->player->pos_y / 64) * 64);
+		data->ray->o_y = -64;
+		data->ray->r_x = (tanf(data->ray->angle) * (data->player->pos_y - data->ray->r_y)) + (64 * data->player->pos_x);
+		data->ray->o_x = (tanf(data->ray->angle) * (data->player->pos_y - (data->ray->r_y + data->ray->o_y))) + (64 * data->player->pos_x); */
+
 
 float	horizontal_line_check(t_data *data)
 {
@@ -21,13 +27,17 @@ float	horizontal_line_check(t_data *data)
 	dist = 0;
 	if (data->ray->angle < M_PI) // ray looking down
 	{
+		data->ray->r_y = (((int)(data->player->pos_y / 64)) + 1) * 64;
+		data->ray->o_y = 64;
+		data->ray->r_x = tanf(data->ray->angle) * (data->ray->r_y - data->player->pos_y) + data->player->pos_x;
+		data->ray->o_x = tanf(data->ray->angle) * (data->ray->r_y + 64 - data->player->pos_y);
 	}
 	else if (data->ray->angle > M_PI) // ray looking up
 	{
-		data->ray->r_y = ((int)(data->player->pos_y / 64) * 64);
+		data->ray->r_y = ((int)(data->player->pos_y / 64)) * 64;
 		data->ray->o_y = -64;
-		data->ray->r_x = (tanf(data->ray->angle) * (data->player->pos_y - data->ray->r_y)) + (64 * data->player->pos_x);
-		data->ray->o_x = (tanf(data->ray->angle) * (data->player->pos_y - (data->ray->r_y + data->ray->o_y))) + (64 * data->player->pos_x);
+		data->ray->r_x = tanf(data->ray->angle) * (data->ray->r_y - data->player->pos_y) + data->player->pos_x;
+		data->ray->o_x = tanf(data->ray->angle) * ((data->ray->r_y - data->player->pos_y) + 64);
 	}
 	else
 	{
