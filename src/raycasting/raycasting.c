@@ -26,7 +26,7 @@ void	raycaster(void *param)
 	t_data	*d;
 	int		n;
 	float	dist;
-	float	tmp = 0.0;
+	float	tmp;
 
 	d = (t_data *)param;
 	d->ray->angle = d->player->angle/*  - (DR * 30) */;
@@ -37,7 +37,7 @@ void	raycaster(void *param)
 	while (n < 1)
 	{
 		dist = horizontal_line_check(d);	// claculate distance with horizontal lines
-		// tmp = vertical_line_check(d);		// calculate distance with vertical lines
+		tmp = vertical_line_check(d);		// calculate distance with vertical lines
 		convert_ray(d, dist, tmp);			// convert casted ray into 3D line
 		n++;
 		d->ray->angle += DR;

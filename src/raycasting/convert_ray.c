@@ -138,16 +138,16 @@ void draw_player (t_data *d)
 
 void	convert_ray(t_data *d, float dist, float tmp)
 {
-	// float	shorter;
+	float	shorter;
 
-	// if (dist < tmp)
-	// 	shorter = dist;
-	// else
-	// 	shorter = tmp;
+	if (dist < tmp)
+		shorter = dist;
+	else
+		shorter = tmp;
 	(void)tmp;
 	draw_minimap(d);
 	draw_horiz(d);
 	draw_vert(d);
 	draw_player(d);
-	draw_ray(d, dist);
+	draw_ray(d, shorter);
 }
