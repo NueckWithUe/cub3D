@@ -30,7 +30,7 @@ $(LIBFT):
 
 $(MLX_LIB):
 	@git clone https://github.com/codam-coding-college/MLX42.git lib/MLX42 > /dev/null 2>&1
-	@cd MLX42 && git checkout 4c275721d0de1a9c514c857c29e9dd235d874591 > /dev/null 2>&1 && cd ..
+	@cd lib/MLX42 && git checkout 4c275721d0de1a9c514c857c29e9dd235d874591 > /dev/null 2>&1 && cd ..
 	@cmake lib/MLX42 -B lib/MLX42/build > /dev/null 2>&1
 	@cmake --build lib/MLX42/build -j4 > /dev/null 2>&1
 
