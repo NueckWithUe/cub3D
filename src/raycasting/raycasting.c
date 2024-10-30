@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/24 11:30:43 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:28:29 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	raycaster(void *param)
 {
 	t_data	*d;
 	int		n;
-	float	dist;
-	float	tmp;
+	int		hit_x;
+	int		hit_y;
 
 	d = (t_data *)param;
 	d->ray->angle = d->player->angle/*  - (DR * 30) */;
@@ -36,9 +36,10 @@ void	raycaster(void *param)
 	d->ibuffer = mlx_new_image(d->mlx, WIDTH, HEIGHT);
 	while (n < 1)
 	{
-		dist = horizontal_line_check(d);	// claculate distance with horizontal lines
-		tmp = vertical_line_check(d);		// calculate distance with vertical lines
-		convert_ray(d, dist, tmp);			// convert casted ray into 3D line
+		// dist = horizontal_line_check(d);	// claculate distance with horizontal lines
+		// tmp = vertical_line_check(d);		// calculate distance with vertical lines
+		ddr(d, &hit_x, &hit_y);
+		convert_ray(d, hit_x, hit_y);			// convert casted ray into 3D line
 		n++;
 		d->ray->angle += DR;
 		d->ray->angle = check_angle(d->ray->angle);
