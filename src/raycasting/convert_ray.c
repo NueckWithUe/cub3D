@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:37:43 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/30 17:01:52 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/30 17:28:25 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	convert_ray(t_data *d, int hit_x, int hit_y)
 {
 	float	dist;
 
-	dist = hit_x - hit_y;
+	dist = sqrtf(powf(d->player->pos_x - hit_x, 2) + powf(d->player->pos_y - hit_y, 2));
 	draw_minimap(d);
 	draw_horiz(d);
 	draw_vert(d);
