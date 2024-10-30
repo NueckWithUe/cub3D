@@ -13,7 +13,8 @@ RCDIR	=		src/raycasting
 RCSRC	=		raycasting.c \
 				hor_line_check.c \
 				ver_line_check.c \
-				convert_ray.c
+				convert_ray.c \
+				ddr.c
 
 LIBFT	=		lib/libft/libft.a
 MLX_LIB	=		lib/MLX42/build/libmlx42.a
