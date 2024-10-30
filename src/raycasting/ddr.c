@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:20:35 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/30 16:27:24 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:33:57 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ddr(t_data *data, int *hit_x, int *hit_y)
 {
-	float	dist;
 	float	dir_x;
 	float	dir_y;
 	float	delta_dist_x;
