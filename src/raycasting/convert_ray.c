@@ -6,13 +6,13 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:37:43 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/24 11:31:27 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/30 17:01:52 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-void draw_ray(t_data *data, float dist)
+void draw_ray(t_data *data, float hit_x)
 {
 	float	step_x, step_y;
 
@@ -22,7 +22,7 @@ void draw_ray(t_data *data, float dist)
 	data->ray->r_x = data->player->pos_x;
 	data->ray->r_y = data->player->pos_y;
 
-	for (int i = 0; i < dist; i++)
+	for (int i = 0; i < hit_x; i++)
 	{
 		if (data->ray->r_x >= 0 && data->ray->r_x < WIDTH && data->ray->r_y >= 0 && data->ray->r_y < HEIGHT)
 		{
@@ -136,18 +136,14 @@ void draw_player (t_data *d)
 	mlx_put_pixel(d->ibuffer, d->player->pos_x, d->player->pos_y - 2, 0x00FF00FF);
 }
 
-void	convert_ray(t_data *d, float dist, float tmp)
+void	convert_ray(t_data *d, int hit_x, int hit_y)
 {
-	float	shorter;
+	float	dist;
 
-	if (dist < tmp)
-		shorter = dist;
-	else
-		shorter = tmp;
-	(void)tmp;
+	dist = hit_x - hit_y;
 	draw_minimap(d);
 	draw_horiz(d);
 	draw_vert(d);
 	draw_player(d);
-	draw_ray(d, shorter);
+	draw_ray(d, dist);
 }

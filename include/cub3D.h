@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/30 16:27:34 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/10/30 17:02:18 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	raycaster(void *param);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
 float	horizontal_line_check(t_data *data);
 float	vertical_line_check(t_data *data);
-void	convert_ray(t_data *d, float dist, float tmp);
+void	convert_ray(t_data *d, int hit_x, int hit_y);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
 
 #endif
