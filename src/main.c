@@ -53,8 +53,8 @@ static t_player	*get_pos(t_data *data)
 			if ((curr == 'N') || (curr == 'S')
 				|| (curr == 'E') || (curr == 'W'))
 			{
-				data->player->pos_x = (x * CUB_LEN) + (CUB_LEN / 2);
-				data->player->pos_y = (y * CUB_HEI) + (CUB_HEI / 2);
+				data->player->pos_x = (x * CUB_SIZ) + (CUB_SIZ / 2);
+				data->player->pos_y = (y * CUB_SIZ) + (CUB_SIZ / 2);
 				data->player->angle = get_ang(curr);
 			}
 			x++;

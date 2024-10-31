@@ -27,8 +27,8 @@ void	ddr(t_data *data, int *hit_x, int *hit_y)
 
 	map_x = (int)data->player->pos_x;
 	map_y = (int)data->player->pos_y;
-	dir_x = data->player->d_x;
-	dir_y = data->player->d_y;
+	dir_x = cos(data->ray->angle) * 5;
+	dir_y = sin(data->ray->angle) * 5;
 	delta_dist_x = fabsf(1 / dir_x);
 	delta_dist_y = fabsf(1 / dir_y);
 	if (dir_x < 0)

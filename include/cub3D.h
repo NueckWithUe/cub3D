@@ -29,8 +29,7 @@
 // # define M_PI 3.14159265358979323846
 # define TEX_HEIGHT 64
 # define TEX_WIDTH 64
-# define CUB_LEN 64
-# define CUB_HEI 64
+# define CUB_SIZ 64
 
 typedef struct s_ray
 {
@@ -78,8 +77,6 @@ t_map	*get_map(char **argv, t_data *data);
 int		ft_check_void(t_map *map);
 void	raycaster(void *param);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
-float	horizontal_line_check(t_data *data);
-float	vertical_line_check(t_data *data);
 void	convert_ray(t_data *d, int hit_x, int hit_y);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
 

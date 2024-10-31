@@ -29,17 +29,15 @@ void	raycaster(void *param)
 	int		hit_y;
 
 	d = (t_data *)param;
-	d->ray->angle = d->player->angle/*  - (DR * 30) */;
+	d->ray->angle = d->player->angle - (DR * 30);
 	d->ray->angle = check_angle(d->ray->angle);
 	n = 0;
 	mlx_delete_image(d->mlx, d->ibuffer);
 	d->ibuffer = mlx_new_image(d->mlx, WIDTH, HEIGHT);
-	while (n < 1)
+	while (n < FOV)
 	{
-		// dist = horizontal_line_check(d);	// claculate distance with horizontal lines
-		// tmp = vertical_line_check(d);		// calculate distance with vertical lines
 		ddr(d, &hit_x, &hit_y);
-		convert_ray(d, hit_x, hit_y);			// convert casted ray into 3D line
+		convert_ray(d, hit_x, hit_y);
 		n++;
 		d->ray->angle += DR;
 		d->ray->angle = check_angle(d->ray->angle);
