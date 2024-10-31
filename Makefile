@@ -11,8 +11,6 @@ SRC		=		main.c \
 
 RCDIR	=		src/raycasting
 RCSRC	=		raycasting.c \
-				hor_line_check.c \
-				ver_line_check.c \
 				convert_ray.c \
 				ddr.c
 
