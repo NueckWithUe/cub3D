@@ -14,8 +14,7 @@
 
 static void	rotate(mlx_key_data_t keydata, t_player *p)
 {
-	if ((keydata.key == MLX_KEY_Q
-			|| keydata.key == MLX_KEY_LEFT) && (keydata.action == 2 || keydata.action == 1))
+	if ((keydata.key == MLX_KEY_LEFT) && (keydata.action == 2 || keydata.action == 1))
 	{
 		p->angle -= 0.1;
 		if (p->angle < 0)
@@ -23,8 +22,7 @@ static void	rotate(mlx_key_data_t keydata, t_player *p)
 		p->d_x = cos(p->angle) * 5;
 		p->d_y = sin(p->angle) * 5;
 	}
-	if ((keydata.key == MLX_KEY_E
-			|| keydata.key == MLX_KEY_RIGHT) && (keydata.action == 2 || keydata.action == 1))
+	if ((keydata.key == MLX_KEY_RIGHT) && (keydata.action == 2 || keydata.action == 1))
 	{
 		p->angle += 0.1;
 		if (p->angle > 2 * M_PI)
@@ -43,8 +41,8 @@ static void	move(mlx_key_data_t keydata, t_player *p)
 	}
 	if (keydata.key == MLX_KEY_A && (keydata.action == 2 || keydata.action == 1))
 	{
-		p->pos_x += cos(p->angle * M_PI) * 5;
-		p->pos_y += sin(p->angle * M_PI) * 5;
+		p->pos_x -= cos(p->angle + (M_PI / 2)) * 5;
+		p->pos_y -= sin(p->angle + (M_PI / 2)) * 5;
 	}
 	if (keydata.key == MLX_KEY_S && (keydata.action == 2 || keydata.action == 1))
 	{
@@ -53,8 +51,8 @@ static void	move(mlx_key_data_t keydata, t_player *p)
 	}
 	if (keydata.key == MLX_KEY_D && (keydata.action == 2 || keydata.action == 1))
 	{
-		p->pos_x -= cos(p->angle) * 5;
-		p->pos_y -= sin(p->angle) * 5;
+		p->pos_x -= cos(p->angle - (M_PI / 2)) * 5;
+		p->pos_y -= sin(p->angle - (M_PI / 2)) * 5;
 	}
 }
 
@@ -73,10 +71,8 @@ void	ft_keypress(mlx_key_data_t keydata, void *param)
 		move(keydata, data->player);
 	if (keydata.key == MLX_KEY_D && (keydata.action == 2 || keydata.action == 1))
 		move(keydata, data->player);
-	if ((keydata.key == MLX_KEY_Q
-			|| keydata.key == MLX_KEY_LEFT) && (keydata.action == 2 || keydata.action == 1))
+	if ((keydata.key == MLX_KEY_LEFT) && (keydata.action == 2 || keydata.action == 1))
 		rotate(keydata, data->player);
-	if ((keydata.key == MLX_KEY_E
-			|| keydata.key == MLX_KEY_RIGHT) && (keydata.action == 2 || keydata.action == 1))
+	if ((keydata.key == MLX_KEY_RIGHT) && (keydata.action == 2 || keydata.action == 1))
 		rotate(keydata, data->player);
 }
