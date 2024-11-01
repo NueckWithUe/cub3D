@@ -39,6 +39,24 @@ static char	*get_path(char *line)
 	return (path);
 }
 
+static uint32_t	set_color(char *path)
+{
+	char		**split;
+	uint32_t	color;
+	int			i;
+
+	i = 0;
+	color = 0;
+	split = ft_split(path, ',');
+	while (split[i])
+	{
+		color = color << 8;
+		color += ft_atoi(split[i]);
+		i++;
+	}
+	return (color);
+}
+
 static t_data	*get_conf(char *line, t_data *data)
 {
 	char	*path;
@@ -52,6 +70,10 @@ static t_data	*get_conf(char *line, t_data *data)
 		data->teast = mlx_load_png(path);
 	else if (!ft_strncmp(line, "WE ", 3))
 		data->twest = mlx_load_png(path);
+	else if (!ft_strncmp(line, "C ", 2))
+		data->color_top = set_color(path);
+	else if (!ft_strncmp(line, "F ", 2))
+		data->color_floor = set_color(path);
 	free(path);
 	return (data);
 }

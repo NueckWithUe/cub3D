@@ -65,6 +65,8 @@ typedef struct s_data
 	mlx_texture_t	*teast;
 	mlx_texture_t	*twest;
 	mlx_image_t		*ibuffer;
+	uint32_t		color_top;
+	uint32_t		color_floor;
 	t_map			*map;
 	t_ray			*ray;
 }	t_data;
@@ -77,7 +79,7 @@ t_map	*get_map(char **argv, t_data *data);
 int		ft_check_void(t_map *map);
 void	raycaster(void *param);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
-void	convert_ray(t_data *d, int hit_x, int hit_y);
+void	convert_ray(t_data *d, int hit_x, int hit_y, int n);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
 
 #endif

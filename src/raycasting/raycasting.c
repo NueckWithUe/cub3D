@@ -37,7 +37,7 @@ void	raycaster(void *param)
 	while (n < FOV)
 	{
 		ddr(d, &hit_x, &hit_y);
-		convert_ray(d, hit_x, hit_y);
+		convert_ray(d, hit_x, hit_y, n);
 		n++;
 		d->ray->angle += DR;
 		d->ray->angle = check_angle(d->ray->angle);
