@@ -138,25 +138,24 @@
 
 static void	draw_3D(t_data *d, float dist, int n)
 {
-	int	start_x, end_x, start_y, end_y, top_color_start, floor_color_start;
-	start_x = n * 5;
-	int	curr_x = start_x;
-	end_x = start_x + 5;
+	int	x, end_x, y, end_y, top_color_start, floor_color_start;
+	x = n * (WIDTH / FOV);
+	end_x = x + (WIDTH / FOV);
 	end_y = ((CUB_SIZ * HEIGHT) / dist) + (HEIGHT / 2);
 	if (end_y > HEIGHT)
 		end_y = HEIGHT;
-	while (curr_x < end_x)
+	while (x < end_x)
 	{
 		top_color_start = 0;
 		floor_color_start = end_y;
-		start_y = (HEIGHT / 2);
-		while (top_color_start < start_y)
-			mlx_put_pixel(d->ibuffer, curr_x, top_color_start++, d->color_top);
-		while (start_y < end_y)
-			mlx_put_pixel(d->ibuffer, curr_x, start_y++, 0xFFFFFFFF);
+		y = (HEIGHT / 2);
+		while (top_color_start < y)
+			mlx_put_pixel(d->ibuffer, x, top_color_start++, d->color_top);
+		while (y < end_y)
+			mlx_put_pixel(d->ibuffer, x, y++, 0xFFFFFFFF);
 		while (floor_color_start < HEIGHT)
-			mlx_put_pixel(d->ibuffer, curr_x, floor_color_start++, d->color_floor);
-		curr_x++;
+			mlx_put_pixel(d->ibuffer, x, floor_color_start++, d->color_floor);
+		x++;
 	}
 }
 
