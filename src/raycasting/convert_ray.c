@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:37:43 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/30 17:28:25 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:08:25 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ static void	draw_3D(t_data *d, float dist, int n)
 
 	x = n * (WIDTH / FOV);
 	end_x = x + (WIDTH / FOV);
+	if (n == 59)
+		end_x = WIDTH;
 	line_height = ((CUB_SIZ * HEIGHT) / dist);
 	if (line_height > HEIGHT)
 		line_height = HEIGHT;
