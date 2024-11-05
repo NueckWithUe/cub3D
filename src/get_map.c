@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/23 14:54:50 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:16:36 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ static uint32_t	set_color(char *path)
 	split = ft_split(path, ',');
 	while (split[i])
 	{
-		color = color << 8;
 		color += ft_atoi(split[i]);
+		color = color << 8;
 		i++;
 	}
+	color += 255;
 	return (color);
 }
 
