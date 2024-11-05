@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/30 17:02:18 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/05 11:33:41 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "get_next_line.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # define FOV 60
 # define DR 0.0174533
 // # define M_PI 3.14159265358979323846
@@ -76,7 +76,8 @@ int		ft_check_extension(char *s);
 int		ft_print_error(char *errmsg);
 t_data	*init_data(void);
 t_map	*get_map(char **argv, t_data *data);
-int		ft_check_void(t_map *map);
+char	*sanitize_line(char *line);
+void	*ft_free_array(char **arr);
 void	raycaster(void *param);
 void	ft_keypress(mlx_key_data_t keydata, void *param);
 void	convert_ray(t_data *d, int hit_x, int hit_y, int n);

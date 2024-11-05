@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:36 by nnagel            #+#    #+#             */
-/*   Updated: 2024/09/30 13:20:05 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:59:40 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,28 +65,4 @@ int	ft_print_error(char *errmsg)
 {
 	ft_printf("Error\n%s\n", errmsg);
 	return (0);
-}
-
-int	ft_check_void(t_map *map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map->con[y])
-	{
-		while (map->con[y][x])
-		{
-			if (map->con[y][x] == '0'
-					&& (map->con[y + 1][x] == '\n' || map->con[y][x + 1] == '\n'))
-			{
-				return (0);
-			}
-			x++;
-		}
-		y++;
-		x = 0;
-	}
-	return (1);
 }

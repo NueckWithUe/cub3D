@@ -7,6 +7,7 @@ SRC		=		main.c \
 				error_handling.c \
 				init.c \
 				get_map.c \
+				map_utils.c \
 				keys.c
 
 RCDIR	=		src/raycasting

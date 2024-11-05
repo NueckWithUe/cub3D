@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 10:11:04 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/05 12:22:40 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,46 @@ static t_player	*get_pos(t_data *data)
 
 	x = 0;
 	y = 0;
-	while (data->map->con[y])
+	while (data->map->con[y][x])
 	{
-		while (data->map->con[y][x])
+		curr = data->map->con[y][x];
+		if ((curr == 'N') || (curr == 'S') || (curr == 'E') || (curr == 'W'))
 		{
-			curr = data->map->con[y][x];
-			if ((curr == 'N') || (curr == 'S')
-				|| (curr == 'E') || (curr == 'W'))
-			{
-				data->player->pos_x = (x * CUB_SIZ) + (CUB_SIZ / 2);
-				data->player->pos_y = (y * CUB_SIZ) + (CUB_SIZ / 2);
-				data->player->angle = get_ang(curr);
-			}
-			x++;
+			data->player->pos_x = (x * CUB_SIZ) + (CUB_SIZ / 2);
+			data->player->pos_y = (y * CUB_SIZ) + (CUB_SIZ / 2);
+			data->player->angle = get_ang(curr);
 		}
-		y++;
-		x = 0;
+		x++;
+		if (data->map->con[y][x] == '\n')
+		{
+			y++;
+			x = 0;
+		}
 	}
 	return (data->player);
+}
+
+static void	*ft_free(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map->con[i])
+	{
+		free(data->map->con[i]);
+		i++;
+	}
+	free(data->map);
+	free(data->player);
+	free(data->ray);
+	mlx_delete_texture(data->tnorth);
+	mlx_delete_texture(data->tsouth);
+	mlx_delete_texture(data->teast);
+	mlx_delete_texture(data->twest);
+	mlx_delete_image(data->mlx, data->ibuffer);
+	mlx_terminate(data->mlx);
+	free(data);
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
@@ -75,12 +97,10 @@ int	main(int argc, char **argv)
 		return (1);
 	data = init_data();
 	data->map = get_map(argv, data);
-	if (!ft_check_void(data->map))
-		return (ft_print_error("Map leads into void"), 1);
 	data->player = get_pos(data);
 	mlx_key_hook(data->mlx, &ft_keypress, (void *)data);
 	mlx_loop_hook(data->mlx, &raycaster, (void *)data);
 	mlx_loop(data->mlx);
-	mlx_terminate(data->mlx);
+	data = ft_free(data);
 	return (0);
 }
