@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/24 10:03:46 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:11:04 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(data->mlx, &ft_keypress, (void *)data);
 	mlx_loop_hook(data->mlx, &raycaster, (void *)data);
 	mlx_loop(data->mlx);
+	mlx_terminate(data->mlx);
 	return (0);
 }
