@@ -22,6 +22,8 @@
 # include "get_next_line.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
+// # define WIDTH 1024
+// # define HEIGHT 720
 # define WIDTH 1920
 # define HEIGHT 1080
 # define FOV 60
@@ -33,6 +35,7 @@
 
 typedef struct s_ray
 {
+	int		v_hit;
 	float	r_x;
 	float	r_y;
 	float	o_x;

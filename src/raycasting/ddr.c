@@ -81,11 +81,13 @@ void	ddr(t_data *data, int *hit_x, int *hit_y)
 		{
 			side_dist_x += fabsf(1 / cosf(data->ray->angle) * 5);
 			map_x += get_step(data->ray->angle, 1);
+			data->ray->v_hit = 1;
 		}
 		else
 		{
 			side_dist_y += fabsf(1 / sinf(data->ray->angle) * 5);
 			map_y += get_step(data->ray->angle, 0);
+			data->ray->v_hit = 0;
 		}
 		if (data->map->con[(int)(map_y / 64)][(int)(map_x / 64)] == '1')
 			break ;

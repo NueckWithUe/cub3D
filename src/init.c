@@ -22,6 +22,7 @@ static t_ray	*init_ray(void)
 	ray->o_y = 0;
 	ray->r_x = 0;
 	ray->r_y = 0;
+	ray->v_hit = 0;
 	return (ray);
 }
 
