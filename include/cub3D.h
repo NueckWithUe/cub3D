@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 11:33:41 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/11 12:43:18 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_map	*get_map(char **argv, t_data *data);
 char	*sanitize_line(char *line);
 void	*ft_free_array(char **arr);
 void	raycaster(void *param);
-void	ft_keypress(mlx_key_data_t keydata, void *param);
+void	ft_keypress(void *param);
 void	convert_ray(t_data *d, int hit_x, int hit_y, int n);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
 
