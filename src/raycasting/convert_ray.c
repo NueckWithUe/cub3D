@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:37:43 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 13:04:40 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:45:11 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,24 @@
 
 static uint32_t put_color(t_data *d)
 {
+	uint32_t	north = 0xFF0000FF;
+	uint32_t	south = 0x00FF00FF;
+	uint32_t	east = 0x0000FFFF;
+	uint32_t	west = 0xFFFFFFFF;
+
 	if (d->ray->v_hit)
 	{
-		if (d->ray->angle < M_PI)
-		{
-			if (d->ray->angle < M_PI / 2)
-				return (0xFF00FF00);
-			else
-				return (0xFFFFFF00);
-		}
+		if (d->ray->angle > M_PI_2 && d->ray->angle < 3 * M_PI_2)
+			return (west);
 		else
-		{
-			if (d->ray->angle > (3 * M_PI) / 2)
-				return (0xFFFF00FF);
-			else
-				return (0xFF0000FF);
-		}
+			return (east);
 	}
 	else
 	{
 		if (d->ray->angle < M_PI)
-		{
-			if (d->ray->angle < M_PI / 2)
-				return (0xFFF0F0F0);
-			else
-				return (0xFF0F0F0F);
-		}
+			return (south);
 		else
-		{
-			if (d->ray->angle > (3 * M_PI) / 2)
-				return (0xFF808080);
-			else
-				return (0xFF080808);
-		}
+			return (north);
 	}
 }
 
