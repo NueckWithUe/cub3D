@@ -45,7 +45,7 @@ static void	draw_3d(t_data *d, float dist, int n)
 
 	x = n * (WIDTH / FOV);
 	end_x = x + (WIDTH / FOV);
-	if (n == 59)
+	if (n == FOV - 1)
 		end_x = WIDTH;
 	line_height = ((CUB_SIZ * HEIGHT) / dist);
 	if (line_height > HEIGHT)

@@ -29,7 +29,7 @@ void	raycaster(void *param)
 	int		hit_y;
 
 	d = (t_data *)param;
-	d->ray->angle = d->player->angle - (DR * 30);
+	d->ray->angle = d->player->angle - (DR * (FOV / 2));
 	d->ray->angle = check_angle(d->ray->angle);
 	n = 0;
 	mlx_delete_image(d->mlx, d->ibuffer);
