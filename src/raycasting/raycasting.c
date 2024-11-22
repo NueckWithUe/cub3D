@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/30 16:28:29 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/21 12:27:28 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static float	check_angle(float ray)
 	return (ray);
 }
 
-void	raycaster(void *param)
+void	raycaster(t_data *d)
 {
-	t_data	*d;
+	// t_data	*d;
 	int		n;
 	int		hit_x;
 	int		hit_y;
 
-	d = (t_data *)param;
+	// d = (t_data *)param;
 	d->ray->angle = d->player->angle - (DR * (FOV / 2));
 	d->ray->angle = check_angle(d->ray->angle);
 	n = 0;

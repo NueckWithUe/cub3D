@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:20:35 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 13:30:34 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/22 10:49:21 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,32 @@ static float	get_side_dist(t_data *data, int x)
 	return (side_dist);
 }
 
-static void	init_values(t_data *data, int *map_x, int *map_y)
+static void	init_values(t_data *data, int *map_x, int *map_y, float *side_dst)
 {
 	*map_x = (int)data->player->pos_x;
 	*map_y = (int)data->player->pos_y;
+	side_dst[0] = get_side_dist(data, 1);
+	side_dst[1] = get_side_dist(data, 0);
 }
 
 void	ddr(t_data *data, int *hit_x, int *hit_y)
 {
-	float	side_dist_x;
-	float	side_dist_y;
+	float	side_dist[2];
 	int		map_x;
 	int		map_y;
 
-	init_values(data, &map_x, &map_y);
-	side_dist_x = get_side_dist(data, 1);
-	side_dist_y = get_side_dist(data, 0);
+	init_values(data, &map_x, &map_y, side_dist);
 	while (1)
 	{
-		if (side_dist_x < side_dist_y)
+		if (side_dist[0] < side_dist[1])
 		{
-			side_dist_x += fabsf(1 / cosf(data->ray->angle) * 5);
+			side_dist[0] += fabsf(1 / cosf(data->ray->angle) * 5);
 			map_x += get_step(data->ray->angle, 1);
 			data->ray->v_hit = 1;
 		}
 		else
 		{
-			side_dist_y += fabsf(1 / sinf(data->ray->angle) * 5);
+			side_dist[1] += fabsf(1 / sinf(data->ray->angle) * 5);
 			map_y += get_step(data->ray->angle, 0);
 			data->ray->v_hit = 0;
 		}
