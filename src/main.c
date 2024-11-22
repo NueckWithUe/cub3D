@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/11 12:32:23 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/22 10:32:39 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	main(int argc, char **argv)
 	data->map = get_map(argv, data);
 	data->player = get_pos(data);
 	mlx_loop_hook(data->mlx, &ft_keypress, (void *)data);
-	mlx_loop_hook(data->mlx, &raycaster, (void *)data);
+	// mlx_loop_hook(data->mlx, &raycaster, (void *)data);
 	mlx_loop(data->mlx);
 	data = ft_free(data);
 	return (0);

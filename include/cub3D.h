@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/11 12:43:18 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/22 10:39:12 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define HEIGHT 1080
 # define FOV 60
 # define DR 0.0174533
-// # define M_PI 3.14159265358979323846
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846264338327950288
+# endif
 # define TEX_HEIGHT 64
 # define TEX_WIDTH 64
 # define CUB_SIZ 64
@@ -81,7 +83,7 @@ t_data	*init_data(void);
 t_map	*get_map(char **argv, t_data *data);
 char	*sanitize_line(char *line);
 void	*ft_free_array(char **arr);
-void	raycaster(void *param);
+void	raycaster(t_data *d);
 void	ft_keypress(void *param);
 void	convert_ray(t_data *d, int hit_x, int hit_y, int n);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
