@@ -23,12 +23,14 @@ VPATH	=		$(SRCDIR):$(RCDIR)
 OBJ		=		$(addprefix obj/, $(SRC:%.c=%.o) $(RCSRC:%.c=%.o))
 
 $(NAME):		$(LIBFT) $(MLX_LIB) $(OBJ)
-				$(CC) $(CFLAGS) $(OBJ) $(LIBFT) ./lib/MLX42/build/libmlx42.a -Iinclude -lglfw -lm -o $(NAME)
+				@echo "Compiling $(NAME)"
+				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) ./lib/MLX42/build/libmlx42.a -Iinclude -lglfw -lm -o $(NAME) && echo "Compiling successful"
 
 $(LIBFT):
-				cd lib/libft && make
+				@cd lib/libft && make
 
 $(MLX_LIB):
+	@echo "Pulling MLX library"
 	@git clone https://github.com/codam-coding-college/MLX42.git lib/MLX42 > /dev/null 2>&1
 	@cd lib/MLX42 && git checkout 4c275721d0de1a9c514c857c29e9dd235d874591 > /dev/null 2>&1 && cd ..
 	@cmake lib/MLX42 -B lib/MLX42/build > /dev/null 2>&1
@@ -38,15 +40,15 @@ all:			$(NAME)
 
 obj/%.o:		%.c
 				@mkdir -p obj/
-				$(CC) $(CFLAGS) -c $< -o $@
+				@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-				cd lib/libft && make clean
-				rm -rf obj/
+				@cd lib/libft && make clean
+				@rm -rf obj/
 
 fclean:			clean
-				cd lib/libft && make fclean
-				rm -rf $(NAME)
+				@cd lib/libft && make fclean
+				@rm -rf $(NAME) lib/MLX42
 
 re:				fclean all
 

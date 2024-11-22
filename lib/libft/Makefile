@@ -49,18 +49,20 @@ AR		=	ar
 ARFLAGS	=	-r -s -c
 
 $(NAME):	$(OBJ)
-			$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+			@echo "Compiling libft"
+			@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+			@echo "Compiling successful"
 
 %.o:		%.c
-			$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 all:		$(NAME)
 
 clean:
-			rm -f $(OBJ)
+			@rm -f $(OBJ)
 
 fclean:		clean
-			rm -f $(NAME)
+			@rm -f $(NAME)
 
 re:			fclean all
 
