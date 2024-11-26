@@ -34,14 +34,14 @@ static void	rotate(t_player *p, mlx_t *mlx)
 
 static void	w_and_a(t_player *p, mlx_t *mlx, char **m)
 {
-	int	npx;
-	int	npy;
+	float	npx;
+	float	npy;
 
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
 	{
-		npx = p->pos_x + cos(p->angle) * 5;
-		npy = p->pos_y + sin(p->angle) * 5;
-		if (m[npy/64][npx/64] != '1')
+		npx = p->pos_x + cosf(p->angle) * 5;
+		npy = p->pos_y + sinf(p->angle) * 5;
+		if (m[(int)npy/64][(int)npx/64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
@@ -49,9 +49,9 @@ static void	w_and_a(t_player *p, mlx_t *mlx, char **m)
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
-		npx = p->pos_x - cos(p->angle + (M_PI / 2)) * 5;
-		npy = p->pos_y - sin(p->angle + (M_PI / 2)) * 5;
-		if (m[npy/64][npx/64] != '1')
+		npx = p->pos_x - cosf(p->angle + (M_PI / 2)) * 5;
+		npy = p->pos_y - sinf(p->angle + (M_PI / 2)) * 5;
+		if (m[(int)npy/64][(int)npx/64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
@@ -61,15 +61,15 @@ static void	w_and_a(t_player *p, mlx_t *mlx, char **m)
 
 static void	move(t_player *p, mlx_t *mlx, char **m)
 {
-	int	npx;
-	int	npy;
+	float	npx;
+	float	npy;
 
 	w_and_a(p, mlx, m);
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 	{
-		npx = p->pos_x - cos(p->angle) * 5;
-		npy = p->pos_y - sin(p->angle) * 5;
-		if (m[npy/64][npx/64] != '1')
+		npx = p->pos_x - cosf(p->angle) * 5;
+		npy = p->pos_y - sinf(p->angle) * 5;
+		if (m[(int)npy/64][(int)npx/64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
@@ -77,9 +77,9 @@ static void	move(t_player *p, mlx_t *mlx, char **m)
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
-		npx = p->pos_x - cos(p->angle - (M_PI / 2)) * 5;
-		npy = p->pos_y - sin(p->angle - (M_PI / 2)) * 5;
-		if (m[npy/64][npx/64] != '1')
+		npx = p->pos_x - cosf(p->angle - (M_PI / 2)) * 5;
+		npy = p->pos_y - sinf(p->angle - (M_PI / 2)) * 5;
+		if (m[(int)npy/64][(int)npx/64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
