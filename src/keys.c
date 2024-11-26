@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:19 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/21 09:00:46 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/26 12:29:30 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,15 @@ static void	move(t_player *p, mlx_t *mlx)
 
 void	ft_keypress(void *param)
 {
-	t_data	*data;
+	t_data	*d;
 
-	data = (t_data *)param;
-	raycaster(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(data->mlx);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_W) || mlx_is_key_down(data->mlx, MLX_KEY_A) || mlx_is_key_down(data->mlx, MLX_KEY_S) || mlx_is_key_down(data->mlx, MLX_KEY_D))
-		move(data->player, data->mlx);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) || mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		rotate(data->player, data->mlx);
+	d = (t_data *)param;
+	raycaster(d);
+	if (mlx_is_key_down(d->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(d->mlx);
+	if (mlx_is_key_down(d->mlx, 87) || mlx_is_key_down(d->mlx, 65)
+		|| mlx_is_key_down(d->mlx, 83) || mlx_is_key_down(d->mlx, 68))
+		move(d->player, d->mlx);
+	if (mlx_is_key_down(d->mlx, 263) || mlx_is_key_down(d->mlx, 262))
+		rotate(d->player, d->mlx);
 }
