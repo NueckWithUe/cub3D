@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:19 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/26 12:29:30 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/26 15:38:28 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,58 @@ static void	rotate(t_player *p, mlx_t *mlx)
 	}
 }
 
-static void	move(t_player *p, mlx_t *mlx)
+static void	w_and_a(t_player *p, mlx_t *mlx, char **m)
 {
+	int	npx;
+	int	npy;
+
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
 	{
-		p->pos_x += cos(p->angle) * 5;
-		p->pos_y += sin(p->angle) * 5;
+		npx = p->pos_x + cos(p->angle) * 5;
+		npy = p->pos_y + sin(p->angle) * 5;
+		if (m[npy/64][npx/64] != '1')
+		{
+			p->pos_x = npx;
+			p->pos_y = npy;
+		}
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
-		p->pos_x -= cos(p->angle + (M_PI / 2)) * 5;
-		p->pos_y -= sin(p->angle + (M_PI / 2)) * 5;
+		npx = p->pos_x - cos(p->angle + (M_PI / 2)) * 5;
+		npy = p->pos_y - sin(p->angle + (M_PI / 2)) * 5;
+		if (m[npy/64][npx/64] != '1')
+		{
+			p->pos_x = npx;
+			p->pos_y = npy;
+		}
 	}
+}
+
+static void	move(t_player *p, mlx_t *mlx, char **m)
+{
+	int	npx;
+	int	npy;
+
+	w_and_a(p, mlx, m);
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 	{
-		p->pos_x -= cos(p->angle) * 5;
-		p->pos_y -= sin(p->angle) * 5;
+		npx = p->pos_x - cos(p->angle) * 5;
+		npy = p->pos_y - sin(p->angle) * 5;
+		if (m[npy/64][npx/64] != '1')
+		{
+			p->pos_x = npx;
+			p->pos_y = npy;
+		}
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
-		p->pos_x -= cos(p->angle - (M_PI / 2)) * 5;
-		p->pos_y -= sin(p->angle - (M_PI / 2)) * 5;
+		npx = p->pos_x - cos(p->angle - (M_PI / 2)) * 5;
+		npy = p->pos_y - sin(p->angle - (M_PI / 2)) * 5;
+		if (m[npy/64][npx/64] != '1')
+		{
+			p->pos_x = npx;
+			p->pos_y = npy;
+		}
 	}
 }
 
@@ -66,7 +97,7 @@ void	ft_keypress(void *param)
 		mlx_close_window(d->mlx);
 	if (mlx_is_key_down(d->mlx, 87) || mlx_is_key_down(d->mlx, 65)
 		|| mlx_is_key_down(d->mlx, 83) || mlx_is_key_down(d->mlx, 68))
-		move(d->player, d->mlx);
+		move(d->player, d->mlx, d->map->con);
 	if (mlx_is_key_down(d->mlx, 263) || mlx_is_key_down(d->mlx, 262))
 		rotate(d->player, d->mlx);
 }
