@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 12:58:54 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 12:36:12 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ t_map	*get_map(char **argv, t_data *data)
 	m->con[y++] = line;
 	while (y < m->height)
 		m->con[y++] = get_next_line(fd);
-	m->len = ft_strlen(m->con[0]) - 1;
 	close(fd);
 	return (m);
 }

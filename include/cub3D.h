@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/22 10:39:12 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 12:39:22 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@
 # define HEIGHT 1080
 # define FOV 60
 # define DR 0.0174533
-# ifndef M_PI
-#  define M_PI 3.14159265358979323846264338327950288
-# endif
 # define TEX_HEIGHT 64
 # define TEX_WIDTH 64
 # define CUB_SIZ 64
@@ -48,7 +45,6 @@ typedef struct s_ray
 typedef struct s_map
 {
 	int		height;
-	int		len;
 	char	**con;
 }	t_map;
 
