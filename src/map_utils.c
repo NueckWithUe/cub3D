@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:54 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 13:31:24 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 14:50:00 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,12 @@ char	*sanitize_line(char *line)
 	return (sanitized);
 }
 
-int	validate_map(char **m)
+static int	check_player(char **m)
 {
 	int	x;
 	int	y;
-	int	p_found;
 
 	y = 0;
-	p_found = 0;
 	while (m[y])
 	{
 		x = 0;
@@ -71,4 +69,36 @@ int	validate_map(char **m)
 		y++;
 	}
 	return (0);
+}
+
+static int	check_invalid(char **m)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (m[y])
+	{
+		x = 0;
+		while (m[y][x])
+		{
+			if (m[y][x] != 'N' && m[y][x] != 'S'
+				&& m[y][x] != 'E' && m[y][x] != 'W'
+				&& m[y][x] != '0' && m[y][x] != '1'
+				&& m[y][x] != ' ' && m[y][x] != '\n')
+				return (0);
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
+int	validate_map(char **m)
+{
+	if (!check_player(m))
+		return (ft_print_error("No player found"));
+	if (!check_invalid(m))
+		return (ft_print_error("Invalid character detected"));
+	return (1);
 }
