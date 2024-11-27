@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/26 12:25:55 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 13:32:27 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ int	main(int argc, char **argv)
 		return (1);
 	data = init_data();
 	data->map = get_map(argv, data);
+	if (!validate_map(data->map->con))
+	{
+		data = ft_free(data);
+		return (ft_print_error("No player found"), 1);
+	}
 	data->player = get_pos(data);
 	mlx_loop_hook(data->mlx, &ft_keypress, (void *)data);
 	mlx_loop(data->mlx);

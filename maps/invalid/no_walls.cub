@@ -1,0 +1,11 @@
+NO ./textures/brick1.png
+SO ./textures/brick2.png
+EA ./textures/brick3.png
+WE ./textures/brick4.png
+
+F 128,128,128
+C 153,255,255
+
+000
+0N0
+000

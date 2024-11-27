@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:54 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 12:30:18 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 13:31:24 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,27 @@ char	*sanitize_line(char *line)
 	free(line);
 	sanitized[j] = '\0';
 	return (sanitized);
+}
+
+int	validate_map(char **m)
+{
+	int	x;
+	int	y;
+	int	p_found;
+
+	y = 0;
+	p_found = 0;
+	while (m[y])
+	{
+		x = 0;
+		while (m[y][x])
+		{
+			if (m[y][x] == 'N' || m[y][x] == 'S'
+				|| m[y][x] == 'E' || m[y][x] == 'W')
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }
