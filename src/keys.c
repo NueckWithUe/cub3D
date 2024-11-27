@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:19 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/26 15:38:28 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 12:37:48 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	w_and_a(t_player *p, mlx_t *mlx, char **m)
 	{
 		npx = p->pos_x + cosf(p->angle) * 5;
 		npy = p->pos_y + sinf(p->angle) * 5;
-		if (m[(int)npy/64][(int)npx/64] != '1')
+		if (m[(int)npy / 64][(int)npx / 64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
@@ -51,7 +51,7 @@ static void	w_and_a(t_player *p, mlx_t *mlx, char **m)
 	{
 		npx = p->pos_x - cosf(p->angle + (M_PI / 2)) * 5;
 		npy = p->pos_y - sinf(p->angle + (M_PI / 2)) * 5;
-		if (m[(int)npy/64][(int)npx/64] != '1')
+		if (m[(int)npy / 64][(int)npx / 64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
@@ -69,7 +69,7 @@ static void	move(t_player *p, mlx_t *mlx, char **m)
 	{
 		npx = p->pos_x - cosf(p->angle) * 5;
 		npy = p->pos_y - sinf(p->angle) * 5;
-		if (m[(int)npy/64][(int)npx/64] != '1')
+		if (m[(int)npy / 64][(int)npx / 64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
@@ -79,7 +79,7 @@ static void	move(t_player *p, mlx_t *mlx, char **m)
 	{
 		npx = p->pos_x - cosf(p->angle - (M_PI / 2)) * 5;
 		npy = p->pos_y - sinf(p->angle - (M_PI / 2)) * 5;
-		if (m[(int)npy/64][(int)npx/64] != '1')
+		if (m[(int)npy / 64][(int)npx / 64] != '1')
 		{
 			p->pos_x = npx;
 			p->pos_y = npy;
