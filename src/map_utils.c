@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:54 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 12:12:58 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 12:30:18 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ char	*sanitize_line(char *line)
 	int		i;
 	int		j;
 
-	sanitized = malloc(sizeof(char) * ft_strlen(line) + 1);
 	i = 0;
 	j = 0;
 	while (line[i] == ' ')
 		i++;
+	if (line[i] == '1' || line[i] == '0')
+		return (line);
+	sanitized = malloc(sizeof(char) * ft_strlen(line) + 1);
 	while (line[i])
 	{
 		sanitized[j] = line[i];
