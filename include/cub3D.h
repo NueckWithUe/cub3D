@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 13:22:37 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 14:13:29 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	ft_keypress(void *param);
 void	convert_ray(t_data *d, int hit_x, int hit_y, int n);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
 int		validate_map(char **m);
+int		validate_conf(char *path);
 
 #endif

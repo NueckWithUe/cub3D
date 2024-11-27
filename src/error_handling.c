@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:36 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/05 10:59:40 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 14:50:47 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,39 @@ static int	ft_check_exist(char *path)
 	return (1);
 }
 
+int	validate_conf(char *path)
+{
+	char	*line;
+	int		fd;
+	int		h;
+
+	fd = open(path, O_RDONLY);
+	h = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		line = sanitize_line(line);
+		if (!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2)
+			|| !ft_strncmp(line, "WE", 2) || !ft_strncmp(line, "EA", 2)
+			|| !ft_strncmp(line, "F", 1) || !ft_strncmp(line, "C", 1))
+			h++;
+	}
+	close(fd);
+	if (h < 6)
+		return (0);
+	return (1);
+}
+
 int	ft_error_handling(char **argv)
 {
 	if (!ft_check_extension(argv[1]))
 		return (ft_print_error("Map extension should be (.cub)"));
 	if (!ft_check_exist(argv[1]))
 		return (ft_print_error("File not readable or doesn't exist"));
+	if (!validate_conf(argv[1]))
+		return (ft_print_error("Config incomplete"));
 	return (1);
 }
 
