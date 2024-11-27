@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:20:35 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/22 10:49:21 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/27 11:25:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ddr(t_data *data, int *hit_x, int *hit_y)
 			map_y += get_step(data->ray->angle, 0);
 			data->ray->v_hit = 0;
 		}
-		if (data->map->con[(int)(map_y / 64)][(int)(map_x / 64)] == '1')
+		if (data->map->con[(map_y / 64)][(map_x / 64)] == '1')
 			break ;
 	}
 	*hit_x = map_x;
