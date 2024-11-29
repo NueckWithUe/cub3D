@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:25 by nnagel            #+#    #+#             */
-/*   Updated: 2024/10/16 19:36:08 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 12:24:26 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static t_ray	*init_ray(void)
 	t_ray	*ray;
 
 	ray = malloc(sizeof(t_ray));
+	if (!ray)
+		return (NULL);
 	ray->angle = 0;
 	ray->o_x = 0;
 	ray->o_y = 0;
@@ -31,6 +33,8 @@ static t_player	*init_player(void)
 	t_player	*player;
 
 	player = malloc(sizeof(t_player));
+	if (!player)
+		return (NULL);
 	player->pos_x = 0;
 	player->pos_y = 0;
 	player->angle = 0;
@@ -44,15 +48,17 @@ t_data	*init_data(void)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
+	data->error = 0;
+	data->map = NULL;
 	data->player = init_player();
 	if (!data->player)
-		return (NULL);
+		return (data->error = 1, data);
 	data->ray = init_ray();
 	if (!data->ray)
-		return (NULL);
+		return (data->error = 2, data);
 	data->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
 	if (!data->mlx)
-		return (NULL);
+		return (data->error = 3, data);
 	data->ibuffer = NULL;
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 12:36:12 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 11:21:09 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ static t_data	*get_conf(char *line, t_data *data)
 		data->color_floor = set_color(path);
 	free(path);
 	free(line);
+	if (!data->tnorth || !data->tsouth || !data->teast || !data->twest)
+		exit(1);
 	return (data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:54 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 14:50:00 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 10:24:47 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,14 @@ void	*ft_free_array(char **arr)
 
 char	*sanitize_line(char *line)
 {
-	char	*sanitized;
-	int		i;
-	int		j;
+	char	*back;
 
-	i = 0;
-	j = 0;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == '1' || line[i] == '0')
-		return (line);
-	sanitized = malloc(sizeof(char) * ft_strlen(line) + 1);
-	while (line[i])
-	{
-		sanitized[j] = line[i];
-		i++;
-		j++;
-	}
-	free(line);
-	sanitized[j] = '\0';
-	return (sanitized);
+	back = line;
+	while (*line == ' ')
+		line++;
+	if (*line == '1' || *line == '0')
+		return (back);
+	return (line);
 }
 
 static int	check_player(char **m)
@@ -100,5 +88,7 @@ int	validate_map(char **m)
 		return (ft_print_error("No player found"));
 	if (!check_invalid(m))
 		return (ft_print_error("Invalid character detected"));
+	if (!check_newline(m))
+		return (ft_print_error("Newline in map"));
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 14:43:12 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 13:37:07 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,14 @@ static t_player	*get_pos(t_data *data)
 	return (data->player);
 }
 
-static void	*ft_free(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map->con[i])
-	{
-		free(data->map->con[i]);
-		i++;
-	}
-	free(data->map->con);
-	free(data->map);
-	free(data->player);
-	free(data->ray);
-	mlx_delete_texture(data->tnorth);
-	mlx_delete_texture(data->tsouth);
-	mlx_delete_texture(data->teast);
-	mlx_delete_texture(data->twest);
-	mlx_delete_image(data->mlx, data->ibuffer);
-	mlx_terminate(data->mlx);
-	free(data);
-	return (NULL);
-}
+// void leaks()
+// {
+// 	system("leaks cub3D");
+// }
 
 int	main(int argc, char **argv)
 {
+	// atexit(leaks);
 	t_data	*data;
 
 	if (argc != 2)
@@ -85,6 +67,10 @@ int	main(int argc, char **argv)
 	if (!ft_error_handling(argv))
 		return (1);
 	data = init_data();
+	if (!data)
+		return (1);
+	if (data->error > 0)
+		return (free_data(data), 1);
 	data->map = get_map(argv, data);
 	if (!validate_map(data->map->con))
 	{

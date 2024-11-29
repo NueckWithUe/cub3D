@@ -1,0 +1,11 @@
+NO ./textures/vbdl.png
+SO ./textures/vfbre.png
+EA ./textures/niu.png
+WE ./textures/bhy.png
+
+F 123,123,123
+C 123,123,123
+
+111
+1N1
+111

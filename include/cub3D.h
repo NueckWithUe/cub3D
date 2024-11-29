@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/27 14:13:29 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 11:43:20 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data
 	uint32_t		color_floor;
 	t_map			*map;
 	t_ray			*ray;
+	int				error;
 }	t_data;
 
 int		ft_error_handling(char **argv);
@@ -85,5 +86,8 @@ void	convert_ray(t_data *d, int hit_x, int hit_y, int n);
 void	ddr(t_data *data, int *hit_x, int *hit_y);
 int		validate_map(char **m);
 int		validate_conf(char *path);
+int		check_newline(char **map);
+void	*ft_free(t_data *data);
+void	*free_data(t_data *data);
 
 #endif
