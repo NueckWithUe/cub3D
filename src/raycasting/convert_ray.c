@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:37:43 by nnagel            #+#    #+#             */
-/*   Updated: 2024/12/08 16:41:38 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/12/08 17:31:29 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	draw_3d(t_data *d, float dist, int n)
 		mlx_put_pixel(d->ibuffer, n, y++, d->color_floor);
 }
 
-void tex_choose(t_data *d, int hit_x, int hit_y)
+static void tex_choose(t_data *d, int hit_x, int hit_y)
 {
 	float	offset_portion;
 
@@ -111,9 +111,9 @@ void tex_choose(t_data *d, int hit_x, int hit_y)
 	else
 	{
 		if (d->ray->angle > 0 && d->ray->angle < M_PI)
-			d->ray->tex4ray = d->tnorth;
-		else
 			d->ray->tex4ray = d->tsouth;
+		else
+			d->ray->tex4ray = d->tnorth;
 		offset_portion = (float)(hit_x % CUB_SIZ) / CUB_SIZ;
 		d->ray->texture_column = (int) (offset_portion * d->ray->tex4ray->width);
 	}
