@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:13:03 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/29 11:43:20 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/12/05 18:22:02 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ typedef struct s_ray
 	float	o_x;
 	float	o_y;
 	float	angle;
+
+	int		pixel;
+	double	proportion;
+	mlx_texture_t	*tex4ray;
+	int				color;
+	int		t_width;
+	int		t_height;
+	double  texture_y;
+	int	texture_column;
 }	t_ray;
 
 typedef struct s_map
@@ -71,6 +80,11 @@ typedef struct s_data
 	t_map			*map;
 	t_ray			*ray;
 	int				error;
+
+	int				player_x;
+	int				player_y;
+	int				map_width;
+	int				map_height;
 }	t_data;
 
 int		ft_error_handling(char **argv);

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:36 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/29 13:37:35 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 14:12:57 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ static int	ft_check_exist(char *path)
 
 int	validate_conf(char *path)
 {
-	int		n = 0;
+	int		n;
 	int		fd;
 	char	*line;
 	char	*san;
 
+	n = 0;
 	fd = open(path, O_RDONLY);
 	while (1)
 	{

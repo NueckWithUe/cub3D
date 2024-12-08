@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/26 12:09:48 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/11/29 19:04:29 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	raycaster(t_data *d)
 		d->ray->angle = check_angle(d->ray->angle);
 	}
 	mlx_image_to_window(d->mlx, d->ibuffer, 0, 0);
+	
 }
