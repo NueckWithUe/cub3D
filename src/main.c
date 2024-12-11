@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:10 by nnagel            #+#    #+#             */
-/*   Updated: 2024/12/08 16:04:28 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/12/11 14:50:06 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,99 +54,22 @@ static t_player	*get_pos(t_data *data)
 	return (data->player);
 }
 
-
-// char	**map_copy_it(t_data *d)
-// {
-// 	char	**copy;
-// 	int		i;
-
-// 	copy = ft_malloc((mlx->parse->cols + 1)*sizeof(char *));
-// 	i = 0;
-// 	while (i < mlx->parse->cols)
-// 	{
-// 		copy[i] = ft_strdup(mlx->parse->map[i]);
-// 		i++;
-// 	}
-// 	copy[i] = NULL;
-// 	return (copy);
-// }
-
-// size_t	ft_strlen1(char *s)
-// {
-// 	size_t	c;
-
-// 	c = 0;
-// 	while (s[c] != '\0')
-// 		c++;
-// 	return (c);
-// }
-
-void find_proportions(t_data *d)
+static int	check_conf(t_data *data)
 {
-	int this_line_len;
-	int i;
-
-	d->map_width = 0;
-	this_line_len = 0;
-	i = 0;
-	while (d->map->con[i])
-	{
-		this_line_len = ft_strlen(d->map->con[i]);
-		if (this_line_len > d->map_width)
-			d->map_width = this_line_len;
-		i++;
-	}
-	d->map_height = i;
+	if (data->tnorth && data->tsouth && data->teast && data->twest)
+		return (1);
+	ft_print_error("Texture is missing");
+	return (0);
 }
 
-void	flood_fill(t_data *d, int x, int y, char **map_copy)
+void leaks()
 {
-	if (x < 0 || x >= d->map_height || y < 0\
-		|| y >= (int)ft_strlen(map_copy[x]))
-		printf("Error: player isn't locked inside the map\n"); //should be clean exit
-	else if (map_copy[x][y] == '1' || map_copy[x][y] == '*')
-		return ;
-	map_copy[x][y] = '*';
-	flood_fill(d, x - 1, y, map_copy);
-	flood_fill(d, x + 1, y, map_copy);
-	flood_fill(d, x, y - 1, map_copy);
-	flood_fill(d, x, y + 1, map_copy);
+	system("leaks cub3D");
 }
-
-char	**map_copy_it(t_data *d)
-{
-	char	**copy;
-	int		i;
-
-	copy = malloc((d->map_height + 1) * sizeof(char *));
-	i = 0;
-	while (i < d->map_height)
-	{
-		copy[i] = ft_strdup(d->map->con[i]);
-		i++;
-	}
-	copy[i] = NULL;
-	return (copy);
-}
-
-void ff_go(t_data *data)
-{
-	char	**map_copy;
-
-	find_proportions(data);
-	map_copy = map_copy_it(data);
-	flood_fill(data, data->player_x, data->player_y, map_copy);
-	ft_free_array(map_copy);
-}
-
-// void leaks()
-// {
-// 	system("leaks cub3D");
-// }
 
 int	main(int argc, char **argv)
 {
-	// atexit(leaks);
+	atexit(leaks);
 	t_data	*data;
 
 	if (argc != 2)
@@ -164,6 +87,8 @@ int	main(int argc, char **argv)
 		data = ft_free(data);
 		return (1);
 	}
+	if (!check_conf(data))
+		exit(1);
 	data->player = get_pos(data);
 	ff_go(data);
 	mlx_loop_hook(data->mlx, &ft_keypress, (void *)data);

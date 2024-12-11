@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:25 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/29 12:24:26 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/12/11 14:09:56 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ t_data	*init_data(void)
 		return (NULL);
 	data->error = 0;
 	data->map = NULL;
+	data->tnorth = NULL;
+	data->tsouth = NULL;
+	data->teast = NULL;
+	data->twest = NULL;
 	data->player = init_player();
 	if (!data->player)
 		return (data->error = 1, data);

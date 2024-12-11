@@ -1,7 +1,7 @@
-NO ./textures/brick1.png
-SO ./textures/brick2.png
-EA ./textures/brick3.png
-WE ./textures/brick4.png
+NO ./textures/north.png
+SO ./textures/south.png
+EA ./textures/east.png
+WE ./textures/west.png
 
 F 128,128,128
 

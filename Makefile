@@ -10,7 +10,8 @@ SRC		=		main.c \
 				map_utils.c \
 				keys.c \
 				map_error.c \
-				free.c
+				free.c \
+				flood_fill.c
 
 RCDIR	=		src/raycasting
 RCSRC	=		raycasting.c \

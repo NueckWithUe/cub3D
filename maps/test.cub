@@ -1,10 +1,11 @@
 NO ./textures/north.png
 SO ./textures/south.png
 EA ./textures/east.png
+WE ./textures/west.png
 
-F 128,128,128
-C 153,255,255
+C 128, 128, 128
+F 128, 128, 128
 
-111
+11
 1N1
-111
+11

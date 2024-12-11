@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:54 by nnagel            #+#    #+#             */
-/*   Updated: 2024/11/29 10:24:47 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/12/11 14:20:07 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*sanitize_line(char *line)
 {
 	char	*back;
 
+	if (!line)
+		return (NULL);
 	back = line;
 	while (*line == ' ')
 		line++;

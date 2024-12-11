@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:12:30 by nnagel            #+#    #+#             */
-/*   Updated: 2024/12/05 08:16:14 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/12/11 14:41:51 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static uint32_t	set_color(char *path)
 {
 	char		**split;
 	uint32_t	color;
+	uint32_t	tmp;
 	int			i;
 
 	i = 0;
@@ -50,7 +51,13 @@ static uint32_t	set_color(char *path)
 	split = ft_split(path, ',');
 	while (split[i])
 	{
-		color += ft_atoi(split[i]);
+		tmp = ft_atoi(split[i]);
+		if (tmp > 255)
+		{
+			ft_print_error("Color value too big");
+			exit(1);
+		}
+		color += tmp;
 		color = color << 8;
 		i++;
 	}
@@ -69,15 +76,8 @@ static t_data	*get_conf(char *line, t_data *data)
 		return (data);
 	}
 	path = get_path(line);
-	if (!ft_strncmp(line, "NO ", 3))
-		data->tnorth = mlx_load_png(path);
-	else if (!ft_strncmp(line, "SO ", 3))
-		data->tsouth = mlx_load_png(path);
-	else if (!ft_strncmp(line, "EA ", 3))
-		data->teast = mlx_load_png(path);
-	else if (!ft_strncmp(line, "WE ", 3))
-		data->twest = mlx_load_png(path);
-	else if (!ft_strncmp(line, "C ", 2))
+	check_path(data, line, path);
+	if (!ft_strncmp(line, "C ", 2))
 		data->color_top = set_color(path);
 	else if (!ft_strncmp(line, "F ", 2))
 		data->color_floor = set_color(path);
@@ -120,6 +120,7 @@ t_map	*get_map(char **argv, t_data *data)
 	m = malloc(sizeof(t_map));
 	y = 0;
 	m->height = get_height(argv);
+	check_map(m->height);
 	m->con = ft_calloc(m->height + 1, sizeof(char *));
 	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
